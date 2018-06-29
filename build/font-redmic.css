@@ -1,0 +1,199 @@
+/*
+  Icon Font: font-redmic
+*/
+
+@font-face {
+  font-family: "font-redmic";
+  src: url("fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.eot");
+  src: url("fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.eot?#iefix") format("embedded-opentype"),
+       url("fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.woff") format("woff"),
+       url("fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.ttf") format("truetype"),
+       url("fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.svg#font-redmic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "font-redmic";
+    src: url("fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.svg#font-redmic") format("svg");
+  }
+}
+
+[data-icon]:before { content: attr(data-icon); }
+
+[data-icon]:before,
+.fr-Calamar:before,
+.fr-Peces_2_negro:before,
+.fr-algae:before,
+.fr-bacteria:before,
+.fr-bacterias:before,
+.fr-bird:before,
+.fr-brachiopodos:before,
+.fr-braquiopodo:before,
+.fr-calamar:before,
+.fr-cefalocordatos:before,
+.fr-celentereo:before,
+.fr-celentereos:before,
+.fr-cetacean:before,
+.fr-crab:before,
+.fr-crustacean:before,
+.fr-equinodermo:before,
+.fr-fish:before,
+.fr-fitoplancton:before,
+.fr-fitoplancton-1:before,
+.fr-fitoplancton-2:before,
+.fr-flechasdemar:before,
+.fr-fungi:before,
+.fr-grid:before,
+.fr-grid2:before,
+.fr-gusano1:before,
+.fr-gusano2:before,
+.fr-gusanos1:before,
+.fr-gusanos2:before,
+.fr-inspire-ac:before,
+.fr-inspire-ad:before,
+.fr-inspire-af:before,
+.fr-inspire-am:before,
+.fr-inspire-au:before,
+.fr-inspire-br:before,
+.fr-inspire-bu:before,
+.fr-inspire-cp:before,
+.fr-inspire-ef:before,
+.fr-inspire-el:before,
+.fr-inspire-er:before,
+.fr-inspire-ge:before,
+.fr-inspire-gg:before,
+.fr-inspire-gn:before,
+.fr-inspire-hb:before,
+.fr-inspire-hh:before,
+.fr-inspire-hy:before,
+.fr-inspire-lc:before,
+.fr-inspire-lu:before,
+.fr-inspire-mf:before,
+.fr-inspire-mr:before,
+.fr-inspire-nz:before,
+.fr-inspire-of:before,
+.fr-inspire-oi:before,
+.fr-inspire-pd:before,
+.fr-inspire-pf:before,
+.fr-inspire-ps:before,
+.fr-inspire-rs:before,
+.fr-inspire-sd:before,
+.fr-inspire-so:before,
+.fr-inspire-sr:before,
+.fr-inspire-su:before,
+.fr-inspire-tn:before,
+.fr-inspire-us:before,
+.fr-layer:before,
+.fr-layers:before,
+.fr-moluscos:before,
+.fr-no-data:before,
+.fr-octopus:before,
+.fr-ogc:before,
+.fr-pardela:before,
+.fr-plants:before,
+.fr-plus-circle:before,
+.fr-protozoos:before,
+.fr-quetognatos:before,
+.fr-sponge:before,
+.fr-squid:before,
+.fr-track:before,
+.fr-trajectory:before,
+.fr-tunicados:before,
+.fr-turtle:before,
+.fr-world:before {
+  display: inline-block;
+  font-family: "font-redmic";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+.fr-Calamar:before { content: "\f166"; }
+.fr-Peces_2_negro:before { content: "\f17f"; }
+.fr-algae:before { content: "\f146"; }
+.fr-bacteria:before { content: "\f148"; }
+.fr-bacterias:before { content: "\f167"; }
+.fr-bird:before { content: "\f149"; }
+.fr-brachiopodos:before { content: "\f168"; }
+.fr-braquiopodo:before { content: "\f14a"; }
+.fr-calamar:before { content: "\f13e"; }
+.fr-cefalocordatos:before { content: "\f137"; }
+.fr-celentereo:before { content: "\f14b"; }
+.fr-celentereos:before { content: "\f169"; }
+.fr-cetacean:before { content: "\f12f"; }
+.fr-crab:before { content: "\f123"; }
+.fr-crustacean:before { content: "\f130"; }
+.fr-equinodermo:before { content: "\f14d"; }
+.fr-fish:before { content: "\f155"; }
+.fr-fitoplancton:before { content: "\f14f"; }
+.fr-fitoplancton-1:before { content: "\f172"; }
+.fr-fitoplancton-2:before { content: "\f173"; }
+.fr-flechasdemar:before { content: "\f151"; }
+.fr-fungi:before { content: "\f13a"; }
+.fr-grid:before { content: "\f111"; }
+.fr-grid2:before { content: "\f1b6"; }
+.fr-gusano1:before { content: "\f15e"; }
+.fr-gusano2:before { content: "\f15f"; }
+.fr-gusanos1:before { content: "\f174"; }
+.fr-gusanos2:before { content: "\f175"; }
+.fr-inspire-ac:before { content: "\f18e"; }
+.fr-inspire-ad:before { content: "\f18f"; }
+.fr-inspire-af:before { content: "\f190"; }
+.fr-inspire-am:before { content: "\f191"; }
+.fr-inspire-au:before { content: "\f192"; }
+.fr-inspire-br:before { content: "\f193"; }
+.fr-inspire-bu:before { content: "\f194"; }
+.fr-inspire-cp:before { content: "\f195"; }
+.fr-inspire-ef:before { content: "\f196"; }
+.fr-inspire-el:before { content: "\f197"; }
+.fr-inspire-er:before { content: "\f198"; }
+.fr-inspire-ge:before { content: "\f199"; }
+.fr-inspire-gg:before { content: "\f19a"; }
+.fr-inspire-gn:before { content: "\f19b"; }
+.fr-inspire-hb:before { content: "\f19c"; }
+.fr-inspire-hh:before { content: "\f19d"; }
+.fr-inspire-hy:before { content: "\f19e"; }
+.fr-inspire-lc:before { content: "\f19f"; }
+.fr-inspire-lu:before { content: "\f1a0"; }
+.fr-inspire-mf:before { content: "\f1a1"; }
+.fr-inspire-mr:before { content: "\f1a2"; }
+.fr-inspire-nz:before { content: "\f1a3"; }
+.fr-inspire-of:before { content: "\f1a4"; }
+.fr-inspire-oi:before { content: "\f1a5"; }
+.fr-inspire-pd:before { content: "\f1a6"; }
+.fr-inspire-pf:before { content: "\f1a7"; }
+.fr-inspire-ps:before { content: "\f1a8"; }
+.fr-inspire-rs:before { content: "\f1a9"; }
+.fr-inspire-sd:before { content: "\f1aa"; }
+.fr-inspire-so:before { content: "\f1ab"; }
+.fr-inspire-sr:before { content: "\f1ac"; }
+.fr-inspire-su:before { content: "\f1ad"; }
+.fr-inspire-tn:before { content: "\f1ae"; }
+.fr-inspire-us:before { content: "\f1af"; }
+.fr-layer:before { content: "\f1b3"; }
+.fr-layers:before { content: "\f15b"; }
+.fr-moluscos:before { content: "\f153"; }
+.fr-no-data:before { content: "\f159"; }
+.fr-octopus:before { content: "\f126"; }
+.fr-ogc:before { content: "\f140"; }
+.fr-pardela:before { content: "\f180"; }
+.fr-plants:before { content: "\f131"; }
+.fr-plus-circle:before { content: "\f1b4"; }
+.fr-protozoos:before { content: "\f13b"; }
+.fr-quetognatos:before { content: "\f182"; }
+.fr-sponge:before { content: "\f12e"; }
+.fr-squid:before { content: "\f127"; }
+.fr-track:before { content: "\f1b2"; }
+.fr-trajectory:before { content: "\f1b1"; }
+.fr-tunicados:before { content: "\f157"; }
+.fr-turtle:before { content: "\f12d"; }
+.fr-world:before { content: "\f15a"; }

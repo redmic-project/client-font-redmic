@@ -1,0 +1,367 @@
+{
+  "checksum": {
+    "previous": "76e0c6db746c89ce1ceee0c8aa5f492f7b58b82c4e0f5d38cadd1417bd26d463",
+    "current": "76e0c6db746c89ce1ceee0c8aa5f492f7b58b82c4e0f5d38cadd1417bd26d463"
+  },
+  "fonts": [
+    "build/fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.ttf",
+    "build/fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.svg",
+    "build/fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.woff",
+    "build/fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.eot"
+  ],
+  "glyphs": {
+    "Calamar": {
+      "codepoint": 61798,
+      "source": "svg/Calamar.svg"
+    },
+    "Peces_2_negro": {
+      "codepoint": 61823,
+      "source": "svg/Peces_2_negro.svg"
+    },
+    "algae": {
+      "codepoint": 61766,
+      "source": "svg/algae.svg"
+    },
+    "bacteria": {
+      "codepoint": 61768,
+      "source": "svg/bacteria.svg"
+    },
+    "bacterias": {
+      "codepoint": 61799,
+      "source": "svg/bacterias.svg"
+    },
+    "bird": {
+      "codepoint": 61769,
+      "source": "svg/bird.svg"
+    },
+    "brachiopodos": {
+      "codepoint": 61800,
+      "source": "svg/brachiopodos.svg"
+    },
+    "braquiopodo": {
+      "codepoint": 61770,
+      "source": "svg/braquiopodo.svg"
+    },
+    "calamar": {
+      "codepoint": 61758,
+      "source": "svg/calamar.svg"
+    },
+    "cefalocordatos": {
+      "codepoint": 61751,
+      "source": "svg/cefalocordatos.svg"
+    },
+    "celentereo": {
+      "codepoint": 61771,
+      "source": "svg/celentereo.svg"
+    },
+    "celentereos": {
+      "codepoint": 61801,
+      "source": "svg/celentereos.svg"
+    },
+    "cetacean": {
+      "codepoint": 61743,
+      "source": "svg/cetacean.svg"
+    },
+    "crab": {
+      "codepoint": 61731,
+      "source": "svg/crab.svg"
+    },
+    "crustacean": {
+      "codepoint": 61744,
+      "source": "svg/crustacean.svg"
+    },
+    "equinodermo": {
+      "codepoint": 61773,
+      "source": "svg/equinodermo.svg"
+    },
+    "fish": {
+      "codepoint": 61781,
+      "source": "svg/fish.svg"
+    },
+    "fitoplancton": {
+      "codepoint": 61775,
+      "source": "svg/fitoplancton.svg"
+    },
+    "fitoplancton-1": {
+      "codepoint": 61810,
+      "source": "svg/fitoplancton-1.svg"
+    },
+    "fitoplancton-2": {
+      "codepoint": 61811,
+      "source": "svg/fitoplancton-2.svg"
+    },
+    "flechasdemar": {
+      "codepoint": 61777,
+      "source": "svg/flechasdemar.svg"
+    },
+    "fungi": {
+      "codepoint": 61754,
+      "source": "svg/fungi.svg"
+    },
+    "grid": {
+      "codepoint": 61713,
+      "source": "svg/grid.svg"
+    },
+    "grid2": {
+      "codepoint": 61878,
+      "source": "svg/grid2.svg"
+    },
+    "gusano1": {
+      "codepoint": 61790,
+      "source": "svg/gusano1.svg"
+    },
+    "gusano2": {
+      "codepoint": 61791,
+      "source": "svg/gusano2.svg"
+    },
+    "gusanos1": {
+      "codepoint": 61812,
+      "source": "svg/gusanos1.svg"
+    },
+    "gusanos2": {
+      "codepoint": 61813,
+      "source": "svg/gusanos2.svg"
+    },
+    "inspire-ac": {
+      "codepoint": 61838,
+      "source": "svg/inspire-ac.svg"
+    },
+    "inspire-ad": {
+      "codepoint": 61839,
+      "source": "svg/inspire-ad.svg"
+    },
+    "inspire-af": {
+      "codepoint": 61840,
+      "source": "svg/inspire-af.svg"
+    },
+    "inspire-am": {
+      "codepoint": 61841,
+      "source": "svg/inspire-am.svg"
+    },
+    "inspire-au": {
+      "codepoint": 61842,
+      "source": "svg/inspire-au.svg"
+    },
+    "inspire-br": {
+      "codepoint": 61843,
+      "source": "svg/inspire-br.svg"
+    },
+    "inspire-bu": {
+      "codepoint": 61844,
+      "source": "svg/inspire-bu.svg"
+    },
+    "inspire-cp": {
+      "codepoint": 61845,
+      "source": "svg/inspire-cp.svg"
+    },
+    "inspire-ef": {
+      "codepoint": 61846,
+      "source": "svg/inspire-ef.svg"
+    },
+    "inspire-el": {
+      "codepoint": 61847,
+      "source": "svg/inspire-el.svg"
+    },
+    "inspire-er": {
+      "codepoint": 61848,
+      "source": "svg/inspire-er.svg"
+    },
+    "inspire-ge": {
+      "codepoint": 61849,
+      "source": "svg/inspire-ge.svg"
+    },
+    "inspire-gg": {
+      "codepoint": 61850,
+      "source": "svg/inspire-gg.svg"
+    },
+    "inspire-gn": {
+      "codepoint": 61851,
+      "source": "svg/inspire-gn.svg"
+    },
+    "inspire-hb": {
+      "codepoint": 61852,
+      "source": "svg/inspire-hb.svg"
+    },
+    "inspire-hh": {
+      "codepoint": 61853,
+      "source": "svg/inspire-hh.svg"
+    },
+    "inspire-hy": {
+      "codepoint": 61854,
+      "source": "svg/inspire-hy.svg"
+    },
+    "inspire-lc": {
+      "codepoint": 61855,
+      "source": "svg/inspire-lc.svg"
+    },
+    "inspire-lu": {
+      "codepoint": 61856,
+      "source": "svg/inspire-lu.svg"
+    },
+    "inspire-mf": {
+      "codepoint": 61857,
+      "source": "svg/inspire-mf.svg"
+    },
+    "inspire-mr": {
+      "codepoint": 61858,
+      "source": "svg/inspire-mr.svg"
+    },
+    "inspire-nz": {
+      "codepoint": 61859,
+      "source": "svg/inspire-nz.svg"
+    },
+    "inspire-of": {
+      "codepoint": 61860,
+      "source": "svg/inspire-of.svg"
+    },
+    "inspire-oi": {
+      "codepoint": 61861,
+      "source": "svg/inspire-oi.svg"
+    },
+    "inspire-pd": {
+      "codepoint": 61862,
+      "source": "svg/inspire-pd.svg"
+    },
+    "inspire-pf": {
+      "codepoint": 61863,
+      "source": "svg/inspire-pf.svg"
+    },
+    "inspire-ps": {
+      "codepoint": 61864,
+      "source": "svg/inspire-ps.svg"
+    },
+    "inspire-rs": {
+      "codepoint": 61865,
+      "source": "svg/inspire-rs.svg"
+    },
+    "inspire-sd": {
+      "codepoint": 61866,
+      "source": "svg/inspire-sd.svg"
+    },
+    "inspire-so": {
+      "codepoint": 61867,
+      "source": "svg/inspire-so.svg"
+    },
+    "inspire-sr": {
+      "codepoint": 61868,
+      "source": "svg/inspire-sr.svg"
+    },
+    "inspire-su": {
+      "codepoint": 61869,
+      "source": "svg/inspire-su.svg"
+    },
+    "inspire-tn": {
+      "codepoint": 61870,
+      "source": "svg/inspire-tn.svg"
+    },
+    "inspire-us": {
+      "codepoint": 61871,
+      "source": "svg/inspire-us.svg"
+    },
+    "layer": {
+      "codepoint": 61875,
+      "source": "svg/layer.svg"
+    },
+    "layers": {
+      "codepoint": 61787,
+      "source": "svg/layers.svg"
+    },
+    "moluscos": {
+      "codepoint": 61779,
+      "source": "svg/moluscos.svg"
+    },
+    "no-data": {
+      "codepoint": 61785,
+      "source": "svg/no-data.svg"
+    },
+    "octopus": {
+      "codepoint": 61734,
+      "source": "svg/octopus.svg"
+    },
+    "ogc": {
+      "codepoint": 61760,
+      "source": "svg/ogc.svg"
+    },
+    "pardela": {
+      "codepoint": 61824,
+      "source": "svg/pardela.svg"
+    },
+    "plants": {
+      "codepoint": 61745,
+      "source": "svg/plants.svg"
+    },
+    "plus-circle": {
+      "codepoint": 61876,
+      "source": "svg/plus-circle.svg"
+    },
+    "protozoos": {
+      "codepoint": 61755,
+      "source": "svg/protozoos.svg"
+    },
+    "quetognatos": {
+      "codepoint": 61826,
+      "source": "svg/quetognatos.svg"
+    },
+    "sponge": {
+      "codepoint": 61742,
+      "source": "svg/sponge.svg"
+    },
+    "squid": {
+      "codepoint": 61735,
+      "source": "svg/squid.svg"
+    },
+    "track": {
+      "codepoint": 61874,
+      "source": "svg/track.svg"
+    },
+    "trajectory": {
+      "codepoint": 61873,
+      "source": "svg/trajectory.svg"
+    },
+    "tunicados": {
+      "codepoint": 61783,
+      "source": "svg/tunicados.svg"
+    },
+    "turtle": {
+      "codepoint": 61741,
+      "source": "svg/turtle.svg"
+    },
+    "world": {
+      "codepoint": 61786,
+      "source": "svg/world.svg"
+    }
+  },
+  "options": {
+    "autowidth": false,
+    "config": "fontcustom.yml",
+    "css_selector": ".fr-{{glyph}}",
+    "debug": true,
+    "font_ascent": 416,
+    "font_descent": 32,
+    "font_design_size": 14,
+    "font_em": 448,
+    "font_name": "font-redmic",
+    "force": false,
+    "input": {
+      "templates": "svg",
+      "vectors": "svg"
+    },
+    "no_hash": false,
+    "output": {
+      "css": "build",
+      "fonts": "build/fonts",
+      "preview": "preview"
+    },
+    "preprocessor_path": null,
+    "quiet": false,
+    "skip_first": false,
+    "templates": [
+      "css",
+      "preview"
+    ]
+  },
+  "templates": [
+    "build/font-redmic.css",
+    "preview/font-redmic-preview.html"
+  ]
+}

@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>font-redmic glyphs preview</title>
+
+    <style>
+      /* Page Styles */
+
+      * {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: #fff;
+        color: #444;
+        font: 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      a,
+      a:visited {
+        color: #888;
+        text-decoration: underline;
+      }
+      a:hover,
+      a:focus { color: #000; }
+
+      header {
+        border-bottom: 2px solid #ddd;
+        margin-bottom: 20px;
+        overflow: hidden;
+        padding: 20px 0;
+      }
+
+      header h1 {
+        color: #888;
+        float: left;
+        font-size: 36px;
+        font-weight: 300;
+      }
+
+      header a {
+        float: right;
+        font-size: 14px;
+      }
+
+      .container {
+        margin: 0 auto;
+        max-width: 1200px;
+        min-width: 960px;
+        padding: 0 40px;
+        width: 90%;
+      }
+
+      .glyph {
+        border-bottom: 1px dotted #ccc;
+        padding: 10px 0 20px;
+        margin-bottom: 20px;
+      }
+
+      .preview-glyphs { vertical-align: bottom; }
+
+      .preview-scale {
+        color: #888;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+
+      .step {
+        display: inline-block;
+        line-height: 1;
+        position: relative;
+        width: 10%;
+      }
+
+      .step .letters,
+      .step i {
+        -webkit-transition: opacity .3s;
+        -moz-transition: opacity .3s;
+        -ms-transition: opacity .3s;
+        -o-transition: opacity .3s;
+        transition: opacity .3s;
+      }
+
+      .step:hover .letters { opacity: 1; }
+      .step:hover i { opacity: .3; }
+
+      .letters {
+        opacity: .3;
+        position: absolute;
+      }
+
+      .characters-off .letters { display: none; }
+      .characters-off .step:hover i { opacity: 1; }
+
+      
+      .size-12 { font-size: 12px; }
+      
+      .size-14 { font-size: 14px; }
+      
+      .size-16 { font-size: 16px; }
+      
+      .size-18 { font-size: 18px; }
+      
+      .size-21 { font-size: 21px; }
+      
+      .size-24 { font-size: 24px; }
+      
+      .size-36 { font-size: 36px; }
+      
+      .size-48 { font-size: 48px; }
+      
+      .size-60 { font-size: 60px; }
+      
+      .size-72 { font-size: 72px; }
+      
+
+      .usage { margin-top: 10px; }
+
+      .usage input {
+        font-family: monospace;
+        margin-right: 3px;
+        padding: 2px 5px;
+        text-align: center;
+      }
+
+      .usage .point { width: 150px; }
+
+      .usage .class { width: 250px; }
+
+      footer {
+        color: #888;
+        font-size: 12px;
+        padding: 20px 0;
+      }
+
+      /* Icon Font: font-redmic */
+
+      @font-face {
+  font-family: "font-redmic";
+  src: url("../build/fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.eot");
+  src: url("../build/fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.eot?#iefix") format("embedded-opentype"),
+       url("../build/fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.woff") format("woff"),
+       url("../build/fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.ttf") format("truetype"),
+       url("../build/fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.svg#font-redmic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "font-redmic";
+    src: url("../build/fonts/font-redmic_76e0c6db746c89ce1ceee0c8aa5f492f.svg#font-redmic") format("svg");
+  }
+}
+
+      [data-icon]:before { content: attr(data-icon); }
+
+      [data-icon]:before,
+      .fr-Calamar:before,
+.fr-Peces_2_negro:before,
+.fr-algae:before,
+.fr-bacteria:before,
+.fr-bacterias:before,
+.fr-bird:before,
+.fr-brachiopodos:before,
+.fr-braquiopodo:before,
+.fr-calamar:before,
+.fr-cefalocordatos:before,
+.fr-celentereo:before,
+.fr-celentereos:before,
+.fr-cetacean:before,
+.fr-crab:before,
+.fr-crustacean:before,
+.fr-equinodermo:before,
+.fr-fish:before,
+.fr-fitoplancton:before,
+.fr-fitoplancton-1:before,
+.fr-fitoplancton-2:before,
+.fr-flechasdemar:before,
+.fr-fungi:before,
+.fr-grid:before,
+.fr-grid2:before,
+.fr-gusano1:before,
+.fr-gusano2:before,
+.fr-gusanos1:before,
+.fr-gusanos2:before,
+.fr-inspire-ac:before,
+.fr-inspire-ad:before,
+.fr-inspire-af:before,
+.fr-inspire-am:before,
+.fr-inspire-au:before,
+.fr-inspire-br:before,
+.fr-inspire-bu:before,
+.fr-inspire-cp:before,
+.fr-inspire-ef:before,
+.fr-inspire-el:before,
+.fr-inspire-er:before,
+.fr-inspire-ge:before,
+.fr-inspire-gg:before,
+.fr-inspire-gn:before,
+.fr-inspire-hb:before,
+.fr-inspire-hh:before,
+.fr-inspire-hy:before,
+.fr-inspire-lc:before,
+.fr-inspire-lu:before,
+.fr-inspire-mf:before,
+.fr-inspire-mr:before,
+.fr-inspire-nz:before,
+.fr-inspire-of:before,
+.fr-inspire-oi:before,
+.fr-inspire-pd:before,
+.fr-inspire-pf:before,
+.fr-inspire-ps:before,
+.fr-inspire-rs:before,
+.fr-inspire-sd:before,
+.fr-inspire-so:before,
+.fr-inspire-sr:before,
+.fr-inspire-su:before,
+.fr-inspire-tn:before,
+.fr-inspire-us:before,
+.fr-layer:before,
+.fr-layers:before,
+.fr-moluscos:before,
+.fr-no-data:before,
+.fr-octopus:before,
+.fr-ogc:before,
+.fr-pardela:before,
+.fr-plants:before,
+.fr-plus-circle:before,
+.fr-protozoos:before,
+.fr-quetognatos:before,
+.fr-sponge:before,
+.fr-squid:before,
+.fr-track:before,
+.fr-trajectory:before,
+.fr-tunicados:before,
+.fr-turtle:before,
+.fr-world:before {
+        display: inline-block;
+  font-family: "font-redmic";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+      }
+
+      .fr-Calamar:before { content: "\f166"; }
+.fr-Peces_2_negro:before { content: "\f17f"; }
+.fr-algae:before { content: "\f146"; }
+.fr-bacteria:before { content: "\f148"; }
+.fr-bacterias:before { content: "\f167"; }
+.fr-bird:before { content: "\f149"; }
+.fr-brachiopodos:before { content: "\f168"; }
+.fr-braquiopodo:before { content: "\f14a"; }
+.fr-calamar:before { content: "\f13e"; }
+.fr-cefalocordatos:before { content: "\f137"; }
+.fr-celentereo:before { content: "\f14b"; }
+.fr-celentereos:before { content: "\f169"; }
+.fr-cetacean:before { content: "\f12f"; }
+.fr-crab:before { content: "\f123"; }
+.fr-crustacean:before { content: "\f130"; }
+.fr-equinodermo:before { content: "\f14d"; }
+.fr-fish:before { content: "\f155"; }
+.fr-fitoplancton:before { content: "\f14f"; }
+.fr-fitoplancton-1:before { content: "\f172"; }
+.fr-fitoplancton-2:before { content: "\f173"; }
+.fr-flechasdemar:before { content: "\f151"; }
+.fr-fungi:before { content: "\f13a"; }
+.fr-grid:before { content: "\f111"; }
+.fr-grid2:before { content: "\f1b6"; }
+.fr-gusano1:before { content: "\f15e"; }
+.fr-gusano2:before { content: "\f15f"; }
+.fr-gusanos1:before { content: "\f174"; }
+.fr-gusanos2:before { content: "\f175"; }
+.fr-inspire-ac:before { content: "\f18e"; }
+.fr-inspire-ad:before { content: "\f18f"; }
+.fr-inspire-af:before { content: "\f190"; }
+.fr-inspire-am:before { content: "\f191"; }
+.fr-inspire-au:before { content: "\f192"; }
+.fr-inspire-br:before { content: "\f193"; }
+.fr-inspire-bu:before { content: "\f194"; }
+.fr-inspire-cp:before { content: "\f195"; }
+.fr-inspire-ef:before { content: "\f196"; }
+.fr-inspire-el:before { content: "\f197"; }
+.fr-inspire-er:before { content: "\f198"; }
+.fr-inspire-ge:before { content: "\f199"; }
+.fr-inspire-gg:before { content: "\f19a"; }
+.fr-inspire-gn:before { content: "\f19b"; }
+.fr-inspire-hb:before { content: "\f19c"; }
+.fr-inspire-hh:before { content: "\f19d"; }
+.fr-inspire-hy:before { content: "\f19e"; }
+.fr-inspire-lc:before { content: "\f19f"; }
+.fr-inspire-lu:before { content: "\f1a0"; }
+.fr-inspire-mf:before { content: "\f1a1"; }
+.fr-inspire-mr:before { content: "\f1a2"; }
+.fr-inspire-nz:before { content: "\f1a3"; }
+.fr-inspire-of:before { content: "\f1a4"; }
+.fr-inspire-oi:before { content: "\f1a5"; }
+.fr-inspire-pd:before { content: "\f1a6"; }
+.fr-inspire-pf:before { content: "\f1a7"; }
+.fr-inspire-ps:before { content: "\f1a8"; }
+.fr-inspire-rs:before { content: "\f1a9"; }
+.fr-inspire-sd:before { content: "\f1aa"; }
+.fr-inspire-so:before { content: "\f1ab"; }
+.fr-inspire-sr:before { content: "\f1ac"; }
+.fr-inspire-su:before { content: "\f1ad"; }
+.fr-inspire-tn:before { content: "\f1ae"; }
+.fr-inspire-us:before { content: "\f1af"; }
+.fr-layer:before { content: "\f1b3"; }
+.fr-layers:before { content: "\f15b"; }
+.fr-moluscos:before { content: "\f153"; }
+.fr-no-data:before { content: "\f159"; }
+.fr-octopus:before { content: "\f126"; }
+.fr-ogc:before { content: "\f140"; }
+.fr-pardela:before { content: "\f180"; }
+.fr-plants:before { content: "\f131"; }
+.fr-plus-circle:before { content: "\f1b4"; }
+.fr-protozoos:before { content: "\f13b"; }
+.fr-quetognatos:before { content: "\f182"; }
+.fr-sponge:before { content: "\f12e"; }
+.fr-squid:before { content: "\f127"; }
+.fr-track:before { content: "\f1b2"; }
+.fr-trajectory:before { content: "\f1b1"; }
+.fr-tunicados:before { content: "\f157"; }
+.fr-turtle:before { content: "\f12d"; }
+.fr-world:before { content: "\f15a"; }
+    </style>
+
+    <!--[if lte IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <script>
+      function toggleCharacters() {
+        var body = document.getElementsByTagName('body')[0];
+        body.className = body.className === 'characters-off' ? '' : 'characters-off';
+      }
+    </script>
+  </head>
+
+  <body class="characters-off">
+    <div id="page" class="container">
+      <header>
+        <h1>font-redmic contains 80 glyphs:</h1>
+        <a onclick="toggleCharacters(); return false;" href="#">Toggle Preview Characters</a>
+      </header>
+
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-Calamar" class="fr-Calamar"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-Calamar" class="fr-Calamar"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-Calamar" class="fr-Calamar"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-Calamar" class="fr-Calamar"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-Calamar" class="fr-Calamar"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-Calamar" class="fr-Calamar"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-Calamar" class="fr-Calamar"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-Calamar" class="fr-Calamar"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-Calamar" class="fr-Calamar"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-Calamar" class="fr-Calamar"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-Calamar" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf166;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-Peces_2_negro" class="fr-Peces_2_negro"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-Peces_2_negro" class="fr-Peces_2_negro"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-Peces_2_negro" class="fr-Peces_2_negro"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-Peces_2_negro" class="fr-Peces_2_negro"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-Peces_2_negro" class="fr-Peces_2_negro"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-Peces_2_negro" class="fr-Peces_2_negro"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-Peces_2_negro" class="fr-Peces_2_negro"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-Peces_2_negro" class="fr-Peces_2_negro"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-Peces_2_negro" class="fr-Peces_2_negro"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-Peces_2_negro" class="fr-Peces_2_negro"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-Peces_2_negro" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf17f;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-algae" class="fr-algae"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-algae" class="fr-algae"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-algae" class="fr-algae"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-algae" class="fr-algae"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-algae" class="fr-algae"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-algae" class="fr-algae"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-algae" class="fr-algae"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-algae" class="fr-algae"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-algae" class="fr-algae"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-algae" class="fr-algae"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-algae" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf146;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-bacteria" class="fr-bacteria"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-bacteria" class="fr-bacteria"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-bacteria" class="fr-bacteria"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-bacteria" class="fr-bacteria"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-bacteria" class="fr-bacteria"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-bacteria" class="fr-bacteria"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-bacteria" class="fr-bacteria"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-bacteria" class="fr-bacteria"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-bacteria" class="fr-bacteria"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-bacteria" class="fr-bacteria"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-bacteria" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf148;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-bacterias" class="fr-bacterias"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-bacterias" class="fr-bacterias"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-bacterias" class="fr-bacterias"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-bacterias" class="fr-bacterias"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-bacterias" class="fr-bacterias"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-bacterias" class="fr-bacterias"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-bacterias" class="fr-bacterias"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-bacterias" class="fr-bacterias"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-bacterias" class="fr-bacterias"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-bacterias" class="fr-bacterias"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-bacterias" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf167;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-bird" class="fr-bird"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-bird" class="fr-bird"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-bird" class="fr-bird"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-bird" class="fr-bird"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-bird" class="fr-bird"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-bird" class="fr-bird"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-bird" class="fr-bird"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-bird" class="fr-bird"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-bird" class="fr-bird"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-bird" class="fr-bird"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-bird" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf149;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-brachiopodos" class="fr-brachiopodos"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-brachiopodos" class="fr-brachiopodos"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-brachiopodos" class="fr-brachiopodos"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-brachiopodos" class="fr-brachiopodos"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-brachiopodos" class="fr-brachiopodos"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-brachiopodos" class="fr-brachiopodos"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-brachiopodos" class="fr-brachiopodos"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-brachiopodos" class="fr-brachiopodos"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-brachiopodos" class="fr-brachiopodos"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-brachiopodos" class="fr-brachiopodos"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-brachiopodos" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf168;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-braquiopodo" class="fr-braquiopodo"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-braquiopodo" class="fr-braquiopodo"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-braquiopodo" class="fr-braquiopodo"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-braquiopodo" class="fr-braquiopodo"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-braquiopodo" class="fr-braquiopodo"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-braquiopodo" class="fr-braquiopodo"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-braquiopodo" class="fr-braquiopodo"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-braquiopodo" class="fr-braquiopodo"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-braquiopodo" class="fr-braquiopodo"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-braquiopodo" class="fr-braquiopodo"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-braquiopodo" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf14a;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-calamar" class="fr-calamar"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-calamar" class="fr-calamar"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-calamar" class="fr-calamar"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-calamar" class="fr-calamar"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-calamar" class="fr-calamar"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-calamar" class="fr-calamar"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-calamar" class="fr-calamar"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-calamar" class="fr-calamar"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-calamar" class="fr-calamar"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-calamar" class="fr-calamar"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-calamar" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf13e;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-cefalocordatos" class="fr-cefalocordatos"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-cefalocordatos" class="fr-cefalocordatos"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-cefalocordatos" class="fr-cefalocordatos"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-cefalocordatos" class="fr-cefalocordatos"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-cefalocordatos" class="fr-cefalocordatos"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-cefalocordatos" class="fr-cefalocordatos"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-cefalocordatos" class="fr-cefalocordatos"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-cefalocordatos" class="fr-cefalocordatos"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-cefalocordatos" class="fr-cefalocordatos"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-cefalocordatos" class="fr-cefalocordatos"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-cefalocordatos" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf137;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-celentereo" class="fr-celentereo"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-celentereo" class="fr-celentereo"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-celentereo" class="fr-celentereo"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-celentereo" class="fr-celentereo"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-celentereo" class="fr-celentereo"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-celentereo" class="fr-celentereo"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-celentereo" class="fr-celentereo"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-celentereo" class="fr-celentereo"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-celentereo" class="fr-celentereo"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-celentereo" class="fr-celentereo"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-celentereo" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf14b;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-celentereos" class="fr-celentereos"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-celentereos" class="fr-celentereos"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-celentereos" class="fr-celentereos"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-celentereos" class="fr-celentereos"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-celentereos" class="fr-celentereos"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-celentereos" class="fr-celentereos"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-celentereos" class="fr-celentereos"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-celentereos" class="fr-celentereos"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-celentereos" class="fr-celentereos"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-celentereos" class="fr-celentereos"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-celentereos" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf169;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-cetacean" class="fr-cetacean"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-cetacean" class="fr-cetacean"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-cetacean" class="fr-cetacean"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-cetacean" class="fr-cetacean"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-cetacean" class="fr-cetacean"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-cetacean" class="fr-cetacean"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-cetacean" class="fr-cetacean"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-cetacean" class="fr-cetacean"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-cetacean" class="fr-cetacean"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-cetacean" class="fr-cetacean"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-cetacean" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf12f;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-crab" class="fr-crab"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-crab" class="fr-crab"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-crab" class="fr-crab"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-crab" class="fr-crab"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-crab" class="fr-crab"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-crab" class="fr-crab"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-crab" class="fr-crab"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-crab" class="fr-crab"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-crab" class="fr-crab"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-crab" class="fr-crab"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-crab" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf123;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-crustacean" class="fr-crustacean"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-crustacean" class="fr-crustacean"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-crustacean" class="fr-crustacean"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-crustacean" class="fr-crustacean"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-crustacean" class="fr-crustacean"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-crustacean" class="fr-crustacean"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-crustacean" class="fr-crustacean"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-crustacean" class="fr-crustacean"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-crustacean" class="fr-crustacean"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-crustacean" class="fr-crustacean"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-crustacean" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf130;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-equinodermo" class="fr-equinodermo"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-equinodermo" class="fr-equinodermo"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-equinodermo" class="fr-equinodermo"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-equinodermo" class="fr-equinodermo"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-equinodermo" class="fr-equinodermo"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-equinodermo" class="fr-equinodermo"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-equinodermo" class="fr-equinodermo"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-equinodermo" class="fr-equinodermo"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-equinodermo" class="fr-equinodermo"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-equinodermo" class="fr-equinodermo"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-equinodermo" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf14d;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-fish" class="fr-fish"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-fish" class="fr-fish"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-fish" class="fr-fish"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-fish" class="fr-fish"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-fish" class="fr-fish"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-fish" class="fr-fish"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-fish" class="fr-fish"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-fish" class="fr-fish"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-fish" class="fr-fish"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-fish" class="fr-fish"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-fish" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf155;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-fitoplancton" class="fr-fitoplancton"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-fitoplancton" class="fr-fitoplancton"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-fitoplancton" class="fr-fitoplancton"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-fitoplancton" class="fr-fitoplancton"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-fitoplancton" class="fr-fitoplancton"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-fitoplancton" class="fr-fitoplancton"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-fitoplancton" class="fr-fitoplancton"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-fitoplancton" class="fr-fitoplancton"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-fitoplancton" class="fr-fitoplancton"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-fitoplancton" class="fr-fitoplancton"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-fitoplancton" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf14f;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-fitoplancton-1" class="fr-fitoplancton-1"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-fitoplancton-1" class="fr-fitoplancton-1"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-fitoplancton-1" class="fr-fitoplancton-1"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-fitoplancton-1" class="fr-fitoplancton-1"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-fitoplancton-1" class="fr-fitoplancton-1"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-fitoplancton-1" class="fr-fitoplancton-1"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-fitoplancton-1" class="fr-fitoplancton-1"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-fitoplancton-1" class="fr-fitoplancton-1"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-fitoplancton-1" class="fr-fitoplancton-1"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-fitoplancton-1" class="fr-fitoplancton-1"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-fitoplancton-1" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf172;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-fitoplancton-2" class="fr-fitoplancton-2"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-fitoplancton-2" class="fr-fitoplancton-2"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-fitoplancton-2" class="fr-fitoplancton-2"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-fitoplancton-2" class="fr-fitoplancton-2"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-fitoplancton-2" class="fr-fitoplancton-2"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-fitoplancton-2" class="fr-fitoplancton-2"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-fitoplancton-2" class="fr-fitoplancton-2"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-fitoplancton-2" class="fr-fitoplancton-2"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-fitoplancton-2" class="fr-fitoplancton-2"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-fitoplancton-2" class="fr-fitoplancton-2"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-fitoplancton-2" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf173;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-flechasdemar" class="fr-flechasdemar"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-flechasdemar" class="fr-flechasdemar"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-flechasdemar" class="fr-flechasdemar"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-flechasdemar" class="fr-flechasdemar"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-flechasdemar" class="fr-flechasdemar"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-flechasdemar" class="fr-flechasdemar"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-flechasdemar" class="fr-flechasdemar"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-flechasdemar" class="fr-flechasdemar"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-flechasdemar" class="fr-flechasdemar"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-flechasdemar" class="fr-flechasdemar"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-flechasdemar" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf151;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-fungi" class="fr-fungi"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-fungi" class="fr-fungi"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-fungi" class="fr-fungi"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-fungi" class="fr-fungi"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-fungi" class="fr-fungi"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-fungi" class="fr-fungi"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-fungi" class="fr-fungi"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-fungi" class="fr-fungi"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-fungi" class="fr-fungi"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-fungi" class="fr-fungi"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-fungi" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf13a;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-grid" class="fr-grid"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-grid" class="fr-grid"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-grid" class="fr-grid"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-grid" class="fr-grid"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-grid" class="fr-grid"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-grid" class="fr-grid"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-grid" class="fr-grid"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-grid" class="fr-grid"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-grid" class="fr-grid"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-grid" class="fr-grid"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-grid" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf111;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-grid2" class="fr-grid2"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-grid2" class="fr-grid2"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-grid2" class="fr-grid2"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-grid2" class="fr-grid2"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-grid2" class="fr-grid2"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-grid2" class="fr-grid2"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-grid2" class="fr-grid2"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-grid2" class="fr-grid2"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-grid2" class="fr-grid2"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-grid2" class="fr-grid2"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-grid2" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1b6;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-gusano1" class="fr-gusano1"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-gusano1" class="fr-gusano1"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-gusano1" class="fr-gusano1"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-gusano1" class="fr-gusano1"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-gusano1" class="fr-gusano1"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-gusano1" class="fr-gusano1"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-gusano1" class="fr-gusano1"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-gusano1" class="fr-gusano1"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-gusano1" class="fr-gusano1"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-gusano1" class="fr-gusano1"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-gusano1" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf15e;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-gusano2" class="fr-gusano2"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-gusano2" class="fr-gusano2"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-gusano2" class="fr-gusano2"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-gusano2" class="fr-gusano2"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-gusano2" class="fr-gusano2"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-gusano2" class="fr-gusano2"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-gusano2" class="fr-gusano2"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-gusano2" class="fr-gusano2"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-gusano2" class="fr-gusano2"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-gusano2" class="fr-gusano2"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-gusano2" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf15f;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-gusanos1" class="fr-gusanos1"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-gusanos1" class="fr-gusanos1"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-gusanos1" class="fr-gusanos1"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-gusanos1" class="fr-gusanos1"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-gusanos1" class="fr-gusanos1"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-gusanos1" class="fr-gusanos1"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-gusanos1" class="fr-gusanos1"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-gusanos1" class="fr-gusanos1"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-gusanos1" class="fr-gusanos1"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-gusanos1" class="fr-gusanos1"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-gusanos1" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf174;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-gusanos2" class="fr-gusanos2"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-gusanos2" class="fr-gusanos2"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-gusanos2" class="fr-gusanos2"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-gusanos2" class="fr-gusanos2"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-gusanos2" class="fr-gusanos2"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-gusanos2" class="fr-gusanos2"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-gusanos2" class="fr-gusanos2"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-gusanos2" class="fr-gusanos2"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-gusanos2" class="fr-gusanos2"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-gusanos2" class="fr-gusanos2"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-gusanos2" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf175;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-ac" class="fr-inspire-ac"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-ac" class="fr-inspire-ac"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-ac" class="fr-inspire-ac"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-ac" class="fr-inspire-ac"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-ac" class="fr-inspire-ac"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-ac" class="fr-inspire-ac"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-ac" class="fr-inspire-ac"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-ac" class="fr-inspire-ac"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-ac" class="fr-inspire-ac"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-ac" class="fr-inspire-ac"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-ac" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf18e;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-ad" class="fr-inspire-ad"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-ad" class="fr-inspire-ad"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-ad" class="fr-inspire-ad"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-ad" class="fr-inspire-ad"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-ad" class="fr-inspire-ad"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-ad" class="fr-inspire-ad"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-ad" class="fr-inspire-ad"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-ad" class="fr-inspire-ad"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-ad" class="fr-inspire-ad"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-ad" class="fr-inspire-ad"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-ad" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf18f;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-af" class="fr-inspire-af"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-af" class="fr-inspire-af"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-af" class="fr-inspire-af"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-af" class="fr-inspire-af"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-af" class="fr-inspire-af"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-af" class="fr-inspire-af"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-af" class="fr-inspire-af"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-af" class="fr-inspire-af"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-af" class="fr-inspire-af"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-af" class="fr-inspire-af"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-af" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf190;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-am" class="fr-inspire-am"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-am" class="fr-inspire-am"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-am" class="fr-inspire-am"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-am" class="fr-inspire-am"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-am" class="fr-inspire-am"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-am" class="fr-inspire-am"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-am" class="fr-inspire-am"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-am" class="fr-inspire-am"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-am" class="fr-inspire-am"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-am" class="fr-inspire-am"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-am" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf191;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-au" class="fr-inspire-au"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-au" class="fr-inspire-au"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-au" class="fr-inspire-au"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-au" class="fr-inspire-au"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-au" class="fr-inspire-au"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-au" class="fr-inspire-au"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-au" class="fr-inspire-au"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-au" class="fr-inspire-au"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-au" class="fr-inspire-au"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-au" class="fr-inspire-au"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-au" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf192;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-br" class="fr-inspire-br"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-br" class="fr-inspire-br"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-br" class="fr-inspire-br"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-br" class="fr-inspire-br"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-br" class="fr-inspire-br"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-br" class="fr-inspire-br"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-br" class="fr-inspire-br"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-br" class="fr-inspire-br"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-br" class="fr-inspire-br"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-br" class="fr-inspire-br"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-br" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf193;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-bu" class="fr-inspire-bu"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-bu" class="fr-inspire-bu"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-bu" class="fr-inspire-bu"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-bu" class="fr-inspire-bu"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-bu" class="fr-inspire-bu"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-bu" class="fr-inspire-bu"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-bu" class="fr-inspire-bu"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-bu" class="fr-inspire-bu"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-bu" class="fr-inspire-bu"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-bu" class="fr-inspire-bu"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-bu" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf194;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-cp" class="fr-inspire-cp"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-cp" class="fr-inspire-cp"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-cp" class="fr-inspire-cp"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-cp" class="fr-inspire-cp"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-cp" class="fr-inspire-cp"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-cp" class="fr-inspire-cp"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-cp" class="fr-inspire-cp"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-cp" class="fr-inspire-cp"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-cp" class="fr-inspire-cp"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-cp" class="fr-inspire-cp"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-cp" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf195;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-ef" class="fr-inspire-ef"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-ef" class="fr-inspire-ef"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-ef" class="fr-inspire-ef"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-ef" class="fr-inspire-ef"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-ef" class="fr-inspire-ef"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-ef" class="fr-inspire-ef"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-ef" class="fr-inspire-ef"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-ef" class="fr-inspire-ef"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-ef" class="fr-inspire-ef"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-ef" class="fr-inspire-ef"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-ef" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf196;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-el" class="fr-inspire-el"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-el" class="fr-inspire-el"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-el" class="fr-inspire-el"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-el" class="fr-inspire-el"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-el" class="fr-inspire-el"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-el" class="fr-inspire-el"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-el" class="fr-inspire-el"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-el" class="fr-inspire-el"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-el" class="fr-inspire-el"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-el" class="fr-inspire-el"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-el" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf197;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-er" class="fr-inspire-er"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-er" class="fr-inspire-er"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-er" class="fr-inspire-er"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-er" class="fr-inspire-er"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-er" class="fr-inspire-er"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-er" class="fr-inspire-er"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-er" class="fr-inspire-er"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-er" class="fr-inspire-er"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-er" class="fr-inspire-er"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-er" class="fr-inspire-er"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-er" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf198;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-ge" class="fr-inspire-ge"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-ge" class="fr-inspire-ge"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-ge" class="fr-inspire-ge"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-ge" class="fr-inspire-ge"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-ge" class="fr-inspire-ge"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-ge" class="fr-inspire-ge"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-ge" class="fr-inspire-ge"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-ge" class="fr-inspire-ge"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-ge" class="fr-inspire-ge"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-ge" class="fr-inspire-ge"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-ge" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf199;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-gg" class="fr-inspire-gg"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-gg" class="fr-inspire-gg"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-gg" class="fr-inspire-gg"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-gg" class="fr-inspire-gg"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-gg" class="fr-inspire-gg"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-gg" class="fr-inspire-gg"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-gg" class="fr-inspire-gg"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-gg" class="fr-inspire-gg"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-gg" class="fr-inspire-gg"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-gg" class="fr-inspire-gg"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-gg" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf19a;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-gn" class="fr-inspire-gn"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-gn" class="fr-inspire-gn"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-gn" class="fr-inspire-gn"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-gn" class="fr-inspire-gn"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-gn" class="fr-inspire-gn"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-gn" class="fr-inspire-gn"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-gn" class="fr-inspire-gn"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-gn" class="fr-inspire-gn"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-gn" class="fr-inspire-gn"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-gn" class="fr-inspire-gn"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-gn" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf19b;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-hb" class="fr-inspire-hb"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-hb" class="fr-inspire-hb"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-hb" class="fr-inspire-hb"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-hb" class="fr-inspire-hb"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-hb" class="fr-inspire-hb"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-hb" class="fr-inspire-hb"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-hb" class="fr-inspire-hb"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-hb" class="fr-inspire-hb"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-hb" class="fr-inspire-hb"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-hb" class="fr-inspire-hb"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-hb" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf19c;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-hh" class="fr-inspire-hh"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-hh" class="fr-inspire-hh"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-hh" class="fr-inspire-hh"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-hh" class="fr-inspire-hh"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-hh" class="fr-inspire-hh"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-hh" class="fr-inspire-hh"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-hh" class="fr-inspire-hh"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-hh" class="fr-inspire-hh"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-hh" class="fr-inspire-hh"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-hh" class="fr-inspire-hh"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-hh" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf19d;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-hy" class="fr-inspire-hy"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-hy" class="fr-inspire-hy"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-hy" class="fr-inspire-hy"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-hy" class="fr-inspire-hy"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-hy" class="fr-inspire-hy"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-hy" class="fr-inspire-hy"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-hy" class="fr-inspire-hy"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-hy" class="fr-inspire-hy"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-hy" class="fr-inspire-hy"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-hy" class="fr-inspire-hy"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-hy" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf19e;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-lc" class="fr-inspire-lc"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-lc" class="fr-inspire-lc"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-lc" class="fr-inspire-lc"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-lc" class="fr-inspire-lc"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-lc" class="fr-inspire-lc"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-lc" class="fr-inspire-lc"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-lc" class="fr-inspire-lc"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-lc" class="fr-inspire-lc"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-lc" class="fr-inspire-lc"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-lc" class="fr-inspire-lc"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-lc" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf19f;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-lu" class="fr-inspire-lu"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-lu" class="fr-inspire-lu"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-lu" class="fr-inspire-lu"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-lu" class="fr-inspire-lu"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-lu" class="fr-inspire-lu"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-lu" class="fr-inspire-lu"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-lu" class="fr-inspire-lu"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-lu" class="fr-inspire-lu"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-lu" class="fr-inspire-lu"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-lu" class="fr-inspire-lu"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-lu" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1a0;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-mf" class="fr-inspire-mf"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-mf" class="fr-inspire-mf"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-mf" class="fr-inspire-mf"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-mf" class="fr-inspire-mf"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-mf" class="fr-inspire-mf"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-mf" class="fr-inspire-mf"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-mf" class="fr-inspire-mf"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-mf" class="fr-inspire-mf"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-mf" class="fr-inspire-mf"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-mf" class="fr-inspire-mf"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-mf" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1a1;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-mr" class="fr-inspire-mr"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-mr" class="fr-inspire-mr"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-mr" class="fr-inspire-mr"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-mr" class="fr-inspire-mr"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-mr" class="fr-inspire-mr"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-mr" class="fr-inspire-mr"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-mr" class="fr-inspire-mr"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-mr" class="fr-inspire-mr"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-mr" class="fr-inspire-mr"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-mr" class="fr-inspire-mr"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-mr" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1a2;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-nz" class="fr-inspire-nz"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-nz" class="fr-inspire-nz"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-nz" class="fr-inspire-nz"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-nz" class="fr-inspire-nz"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-nz" class="fr-inspire-nz"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-nz" class="fr-inspire-nz"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-nz" class="fr-inspire-nz"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-nz" class="fr-inspire-nz"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-nz" class="fr-inspire-nz"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-nz" class="fr-inspire-nz"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-nz" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1a3;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-of" class="fr-inspire-of"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-of" class="fr-inspire-of"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-of" class="fr-inspire-of"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-of" class="fr-inspire-of"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-of" class="fr-inspire-of"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-of" class="fr-inspire-of"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-of" class="fr-inspire-of"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-of" class="fr-inspire-of"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-of" class="fr-inspire-of"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-of" class="fr-inspire-of"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-of" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1a4;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-oi" class="fr-inspire-oi"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-oi" class="fr-inspire-oi"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-oi" class="fr-inspire-oi"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-oi" class="fr-inspire-oi"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-oi" class="fr-inspire-oi"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-oi" class="fr-inspire-oi"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-oi" class="fr-inspire-oi"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-oi" class="fr-inspire-oi"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-oi" class="fr-inspire-oi"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-oi" class="fr-inspire-oi"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-oi" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1a5;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-pd" class="fr-inspire-pd"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-pd" class="fr-inspire-pd"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-pd" class="fr-inspire-pd"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-pd" class="fr-inspire-pd"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-pd" class="fr-inspire-pd"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-pd" class="fr-inspire-pd"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-pd" class="fr-inspire-pd"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-pd" class="fr-inspire-pd"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-pd" class="fr-inspire-pd"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-pd" class="fr-inspire-pd"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-pd" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1a6;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-pf" class="fr-inspire-pf"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-pf" class="fr-inspire-pf"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-pf" class="fr-inspire-pf"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-pf" class="fr-inspire-pf"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-pf" class="fr-inspire-pf"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-pf" class="fr-inspire-pf"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-pf" class="fr-inspire-pf"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-pf" class="fr-inspire-pf"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-pf" class="fr-inspire-pf"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-pf" class="fr-inspire-pf"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-pf" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1a7;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-ps" class="fr-inspire-ps"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-ps" class="fr-inspire-ps"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-ps" class="fr-inspire-ps"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-ps" class="fr-inspire-ps"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-ps" class="fr-inspire-ps"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-ps" class="fr-inspire-ps"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-ps" class="fr-inspire-ps"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-ps" class="fr-inspire-ps"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-ps" class="fr-inspire-ps"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-ps" class="fr-inspire-ps"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-ps" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1a8;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-rs" class="fr-inspire-rs"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-rs" class="fr-inspire-rs"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-rs" class="fr-inspire-rs"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-rs" class="fr-inspire-rs"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-rs" class="fr-inspire-rs"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-rs" class="fr-inspire-rs"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-rs" class="fr-inspire-rs"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-rs" class="fr-inspire-rs"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-rs" class="fr-inspire-rs"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-rs" class="fr-inspire-rs"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-rs" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1a9;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-sd" class="fr-inspire-sd"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-sd" class="fr-inspire-sd"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-sd" class="fr-inspire-sd"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-sd" class="fr-inspire-sd"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-sd" class="fr-inspire-sd"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-sd" class="fr-inspire-sd"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-sd" class="fr-inspire-sd"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-sd" class="fr-inspire-sd"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-sd" class="fr-inspire-sd"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-sd" class="fr-inspire-sd"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-sd" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1aa;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-so" class="fr-inspire-so"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-so" class="fr-inspire-so"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-so" class="fr-inspire-so"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-so" class="fr-inspire-so"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-so" class="fr-inspire-so"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-so" class="fr-inspire-so"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-so" class="fr-inspire-so"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-so" class="fr-inspire-so"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-so" class="fr-inspire-so"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-so" class="fr-inspire-so"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-so" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1ab;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-sr" class="fr-inspire-sr"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-sr" class="fr-inspire-sr"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-sr" class="fr-inspire-sr"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-sr" class="fr-inspire-sr"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-sr" class="fr-inspire-sr"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-sr" class="fr-inspire-sr"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-sr" class="fr-inspire-sr"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-sr" class="fr-inspire-sr"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-sr" class="fr-inspire-sr"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-sr" class="fr-inspire-sr"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-sr" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1ac;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-su" class="fr-inspire-su"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-su" class="fr-inspire-su"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-su" class="fr-inspire-su"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-su" class="fr-inspire-su"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-su" class="fr-inspire-su"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-su" class="fr-inspire-su"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-su" class="fr-inspire-su"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-su" class="fr-inspire-su"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-su" class="fr-inspire-su"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-su" class="fr-inspire-su"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-su" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1ad;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-tn" class="fr-inspire-tn"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-tn" class="fr-inspire-tn"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-tn" class="fr-inspire-tn"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-tn" class="fr-inspire-tn"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-tn" class="fr-inspire-tn"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-tn" class="fr-inspire-tn"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-tn" class="fr-inspire-tn"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-tn" class="fr-inspire-tn"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-tn" class="fr-inspire-tn"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-tn" class="fr-inspire-tn"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-tn" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1ae;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-inspire-us" class="fr-inspire-us"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-inspire-us" class="fr-inspire-us"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-inspire-us" class="fr-inspire-us"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-inspire-us" class="fr-inspire-us"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-inspire-us" class="fr-inspire-us"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-inspire-us" class="fr-inspire-us"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-inspire-us" class="fr-inspire-us"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-inspire-us" class="fr-inspire-us"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-inspire-us" class="fr-inspire-us"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-inspire-us" class="fr-inspire-us"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-inspire-us" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1af;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-layer" class="fr-layer"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-layer" class="fr-layer"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-layer" class="fr-layer"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-layer" class="fr-layer"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-layer" class="fr-layer"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-layer" class="fr-layer"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-layer" class="fr-layer"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-layer" class="fr-layer"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-layer" class="fr-layer"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-layer" class="fr-layer"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-layer" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1b3;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-layers" class="fr-layers"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-layers" class="fr-layers"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-layers" class="fr-layers"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-layers" class="fr-layers"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-layers" class="fr-layers"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-layers" class="fr-layers"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-layers" class="fr-layers"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-layers" class="fr-layers"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-layers" class="fr-layers"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-layers" class="fr-layers"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-layers" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf15b;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-moluscos" class="fr-moluscos"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-moluscos" class="fr-moluscos"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-moluscos" class="fr-moluscos"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-moluscos" class="fr-moluscos"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-moluscos" class="fr-moluscos"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-moluscos" class="fr-moluscos"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-moluscos" class="fr-moluscos"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-moluscos" class="fr-moluscos"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-moluscos" class="fr-moluscos"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-moluscos" class="fr-moluscos"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-moluscos" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf153;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-no-data" class="fr-no-data"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-no-data" class="fr-no-data"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-no-data" class="fr-no-data"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-no-data" class="fr-no-data"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-no-data" class="fr-no-data"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-no-data" class="fr-no-data"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-no-data" class="fr-no-data"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-no-data" class="fr-no-data"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-no-data" class="fr-no-data"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-no-data" class="fr-no-data"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-no-data" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf159;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-octopus" class="fr-octopus"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-octopus" class="fr-octopus"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-octopus" class="fr-octopus"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-octopus" class="fr-octopus"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-octopus" class="fr-octopus"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-octopus" class="fr-octopus"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-octopus" class="fr-octopus"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-octopus" class="fr-octopus"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-octopus" class="fr-octopus"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-octopus" class="fr-octopus"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-octopus" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf126;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-ogc" class="fr-ogc"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-ogc" class="fr-ogc"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-ogc" class="fr-ogc"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-ogc" class="fr-ogc"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-ogc" class="fr-ogc"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-ogc" class="fr-ogc"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-ogc" class="fr-ogc"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-ogc" class="fr-ogc"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-ogc" class="fr-ogc"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-ogc" class="fr-ogc"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-ogc" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf140;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-pardela" class="fr-pardela"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-pardela" class="fr-pardela"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-pardela" class="fr-pardela"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-pardela" class="fr-pardela"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-pardela" class="fr-pardela"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-pardela" class="fr-pardela"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-pardela" class="fr-pardela"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-pardela" class="fr-pardela"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-pardela" class="fr-pardela"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-pardela" class="fr-pardela"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-pardela" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf180;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-plants" class="fr-plants"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-plants" class="fr-plants"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-plants" class="fr-plants"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-plants" class="fr-plants"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-plants" class="fr-plants"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-plants" class="fr-plants"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-plants" class="fr-plants"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-plants" class="fr-plants"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-plants" class="fr-plants"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-plants" class="fr-plants"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-plants" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf131;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-plus-circle" class="fr-plus-circle"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-plus-circle" class="fr-plus-circle"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-plus-circle" class="fr-plus-circle"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-plus-circle" class="fr-plus-circle"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-plus-circle" class="fr-plus-circle"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-plus-circle" class="fr-plus-circle"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-plus-circle" class="fr-plus-circle"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-plus-circle" class="fr-plus-circle"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-plus-circle" class="fr-plus-circle"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-plus-circle" class="fr-plus-circle"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-plus-circle" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1b4;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-protozoos" class="fr-protozoos"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-protozoos" class="fr-protozoos"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-protozoos" class="fr-protozoos"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-protozoos" class="fr-protozoos"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-protozoos" class="fr-protozoos"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-protozoos" class="fr-protozoos"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-protozoos" class="fr-protozoos"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-protozoos" class="fr-protozoos"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-protozoos" class="fr-protozoos"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-protozoos" class="fr-protozoos"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-protozoos" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf13b;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-quetognatos" class="fr-quetognatos"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-quetognatos" class="fr-quetognatos"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-quetognatos" class="fr-quetognatos"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-quetognatos" class="fr-quetognatos"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-quetognatos" class="fr-quetognatos"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-quetognatos" class="fr-quetognatos"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-quetognatos" class="fr-quetognatos"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-quetognatos" class="fr-quetognatos"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-quetognatos" class="fr-quetognatos"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-quetognatos" class="fr-quetognatos"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-quetognatos" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf182;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-sponge" class="fr-sponge"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-sponge" class="fr-sponge"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-sponge" class="fr-sponge"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-sponge" class="fr-sponge"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-sponge" class="fr-sponge"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-sponge" class="fr-sponge"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-sponge" class="fr-sponge"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-sponge" class="fr-sponge"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-sponge" class="fr-sponge"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-sponge" class="fr-sponge"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-sponge" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf12e;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-squid" class="fr-squid"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-squid" class="fr-squid"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-squid" class="fr-squid"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-squid" class="fr-squid"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-squid" class="fr-squid"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-squid" class="fr-squid"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-squid" class="fr-squid"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-squid" class="fr-squid"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-squid" class="fr-squid"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-squid" class="fr-squid"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-squid" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf127;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-track" class="fr-track"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-track" class="fr-track"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-track" class="fr-track"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-track" class="fr-track"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-track" class="fr-track"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-track" class="fr-track"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-track" class="fr-track"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-track" class="fr-track"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-track" class="fr-track"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-track" class="fr-track"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-track" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1b2;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-trajectory" class="fr-trajectory"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-trajectory" class="fr-trajectory"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-trajectory" class="fr-trajectory"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-trajectory" class="fr-trajectory"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-trajectory" class="fr-trajectory"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-trajectory" class="fr-trajectory"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-trajectory" class="fr-trajectory"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-trajectory" class="fr-trajectory"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-trajectory" class="fr-trajectory"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-trajectory" class="fr-trajectory"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-trajectory" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf1b1;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-tunicados" class="fr-tunicados"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-tunicados" class="fr-tunicados"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-tunicados" class="fr-tunicados"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-tunicados" class="fr-tunicados"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-tunicados" class="fr-tunicados"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-tunicados" class="fr-tunicados"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-tunicados" class="fr-tunicados"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-tunicados" class="fr-tunicados"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-tunicados" class="fr-tunicados"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-tunicados" class="fr-tunicados"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-tunicados" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf157;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-turtle" class="fr-turtle"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-turtle" class="fr-turtle"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-turtle" class="fr-turtle"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-turtle" class="fr-turtle"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-turtle" class="fr-turtle"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-turtle" class="fr-turtle"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-turtle" class="fr-turtle"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-turtle" class="fr-turtle"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-turtle" class="fr-turtle"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-turtle" class="fr-turtle"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-turtle" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf12d;" />
+        </div>
+      </div>
+      
+      <div class="glyph">
+        <div class="preview-glyphs">
+          <span class="step size-12"><span class="letters">Pp</span><i id="fr-world" class="fr-world"></i></span><span class="step size-14"><span class="letters">Pp</span><i id="fr-world" class="fr-world"></i></span><span class="step size-16"><span class="letters">Pp</span><i id="fr-world" class="fr-world"></i></span><span class="step size-18"><span class="letters">Pp</span><i id="fr-world" class="fr-world"></i></span><span class="step size-21"><span class="letters">Pp</span><i id="fr-world" class="fr-world"></i></span><span class="step size-24"><span class="letters">Pp</span><i id="fr-world" class="fr-world"></i></span><span class="step size-36"><span class="letters">Pp</span><i id="fr-world" class="fr-world"></i></span><span class="step size-48"><span class="letters">Pp</span><i id="fr-world" class="fr-world"></i></span><span class="step size-60"><span class="letters">Pp</span><i id="fr-world" class="fr-world"></i></span><span class="step size-72"><span class="letters">Pp</span><i id="fr-world" class="fr-world"></i></span>
+        </div>
+        <div class="preview-scale">
+          <span class="step">12</span><span class="step">14</span><span class="step">16</span><span class="step">18</span><span class="step">21</span><span class="step">24</span><span class="step">36</span><span class="step">48</span><span class="step">60</span><span class="step">72</span>
+        </div>
+        <div class="usage">
+          <input class="class" type="text" readonly="readonly" onClick="this.select();" value=".fr-world" />
+          <input class="point" type="text" readonly="readonly" onClick="this.select();" value="&amp;#xf15a;" />
+        </div>
+      </div>
+      
+
+      <footer>
+        Made with love using <a href="http://fontcustom.com">Font Custom</a>.
+      </footer>
+    </div>
+  </body>
+</html>

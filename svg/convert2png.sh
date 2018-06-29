@@ -1,0 +1,1 @@
+for i in `find -name '*.svg'`; do rsvg-convert $i -o `echo $i | sed -e 's/svg$/png/' | sed -e 's/\./\.\.\/png/'`; done
